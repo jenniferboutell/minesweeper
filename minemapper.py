@@ -155,4 +155,3 @@ if __name__ == '__main__':
     with open(g_a.infile, 'r') as g_i_fh, open(g_a.outfile, 'w') as g_o_fh:
         xlate_grids(input_fh=g_i_fh, output_fh=g_o_fh)
 
-# END
