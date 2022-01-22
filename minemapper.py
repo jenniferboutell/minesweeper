@@ -12,7 +12,7 @@ TextHandle = Union[TextIO, StringIO]
 """
 Default input and output files.
 """
-g_dflt_infile = 'mines.txt'
+g_dflt_infile = 'official_input.txt'
 g_dflt_outfile = 'minesweeper_output.txt'
 
 
