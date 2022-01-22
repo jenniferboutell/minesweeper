@@ -4,7 +4,10 @@
 # and emit corresponding series of grid-maps that populated unmined cells
 # with hints, ie count (0-8) of mines in adjacent cells.
 
-from typing import Optional
+from typing import Optional, Union, TextIO
+from io import StringIO
+
+TextHandle = Union[TextIO, StringIO]
 
 """
 Default input and output files.
@@ -13,7 +16,7 @@ g_dflt_infile = 'mines.txt'
 g_dflt_outfile = 'minesweeper_output.txt'
 
 
-def read_dimens(input_fh) -> tuple[int, int]:
+def read_dimens(input_fh: TextHandle) -> tuple[int, int]:
     """
     Read the first line of a grid specification, which provides the
     dimensions of the grid. The format is:
@@ -22,7 +25,7 @@ def read_dimens(input_fh) -> tuple[int, int]:
     For example, the following indicates two rows and three columns.
     2 3
 
-    :param input_fh: File handle from which to read grid spec.
+    :param input_fh: I/O handle from which to read grid spec.
     :return tuple consisting of a pair of integers: (rows, columns)
     """
     line = input_fh.readline().strip()
@@ -32,7 +35,7 @@ def read_dimens(input_fh) -> tuple[int, int]:
     return rows, cols
 
 
-def read_grid_spec(input_fh) -> Optional[list[list]]:
+def read_grid_spec(input_fh: TextHandle) -> Optional[list[list]]:
     """
     Read one grid specification from input filehandle, then convert
     to structured representation.
@@ -48,7 +51,7 @@ def read_grid_spec(input_fh) -> Optional[list[list]]:
     are single characters, same as read from the input grid spec.
     then write grid to output filehandle.
 
-    :param input_fh: Filehandle from which to read grid spec.
+    :param input_fh: I/O handle from which to read grid spec.
     :return: None, if dimensions are 0x0;
     otherwise, structured representation of grid specification.
     """
@@ -100,13 +103,13 @@ def add_grid_hints_one(grid: list[list]) -> None:
             grid[y][x] = nbr_mines
 
 
-def write_grid(grid: list[list], output_fh) -> None:
+def write_grid(grid: list[list], output_fh: TextHandle) -> None:
     """
     Convert structured grid representation back to string,
     and write to output filehandle.
 
     :param grid: Structured grid representation to convert.
-    :param output_fh: ilehandle to which string is written.
+    :param output_fh: I/O handle to which string is written.
     :return: None.
     """
     for row in grid:
@@ -114,7 +117,7 @@ def write_grid(grid: list[list], output_fh) -> None:
         output_fh.write('\n')
 
 
-def xlate_grids(input_fh=None, output_fh=None):
+def xlate_grids(input_fh: TextHandle, output_fh: TextHandle):
     """
     Read a series of grid specifications from input filehandle,
     replace `.` marker of non-mine cells with a hint consisting of
@@ -125,8 +128,8 @@ def xlate_grids(input_fh=None, output_fh=None):
     Each output grid spec is followed by empty line.
     All lines are terminated with newline.
 
-    :param input_fh: Input filehandle.
-    :param output_fh: Output filehande.
+    :param input_fh: Input I/O handle.
+    :param output_fh: Output I/O handle.
     :return: None.
     """
     grid = read_grid_spec(input_fh)
@@ -135,8 +138,6 @@ def xlate_grids(input_fh=None, output_fh=None):
         output_fh.write(f'Field #{field_num}:\n')
         add_grid_hints_one(grid)
         write_grid(grid=grid, output_fh=output_fh)
-        # NOTE following what official_output.txt contains here:
-        # line-ending within field is NL, between field is CRLF.
         output_fh.write('\n')
         grid = read_grid_spec(input_fh)
         if grid is not None:
@@ -155,3 +156,4 @@ if __name__ == '__main__':
     with open(g_a.infile, 'r') as g_i_fh, open(g_a.outfile, 'w') as g_o_fh:
         xlate_grids(input_fh=g_i_fh, output_fh=g_o_fh)
 
+# END
