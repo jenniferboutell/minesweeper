@@ -132,4 +132,5 @@ dmypy.json
 .idea
 
 # Default output file
+input.txt
 minesweeper_output.txt

@@ -1,25 +1,34 @@
+from typing import TextIO
 import random
 
 
-columns = input("Please enter the Number of Columns you would like to test: ")
-rows = input("Please enter the number of rows you would like to test: ")
-minepercentage = input("Please enter the percentage of mines you would like to test: ")
-
-
-mine_input = open('input.txt', 'w')
-
-def writeinput():
-    for y in range(0, int(rows)):
-        for x in range(0, int(columns)):
-            if random.randrange(0, 100) < int(minepercentage):
-                mine_input.write("*")
+def writeinput(rows: int, columns: int, minepercentage: int, file: TextIO):
+    for y in range(0, rows):
+        for x in range(0, columns):
+            if random.randrange(0, 100) < minepercentage:
+                file.write("*")
             else:
-                mine_input.write(".")
-        mine_input.write("\n")
-if minepercentage.isnumeric() == False or rows.isnumeric() == False or columns.isnumeric() == False:
-    print("Minefield not generated. Please enter valid integers between 0 and 100")
-else:
-    if int(minepercentage) not in range(0, 100) or int(rows) not in range(0,100) or int(columns) not in range(0,100):
-        print("Minefield not generated. Please enter valid integers between 0 and 100")
+                file.write(".")
+        file.write("\n")
+
+
+if __name__ == '__main__':
+    g_cols = input("Please enter the Number of Columns you would like to test: ")
+    g_rows = input("Please enter the number of rows you would like to test: ")
+    g_perc = input("Please enter the percentage of mines you would like to test: ")
+    g_file = open('input.txt', 'w')
+
+    if not g_perc.isnumeric() or not g_rows.isnumeric() or not g_cols.isnumeric():
+        print("Minefield not generated. Please enter valid integers.")
     else:
-        writeinput()
+        g_cols = int(g_cols)
+        g_rows = int(g_rows)
+        g_perc = int(g_perc)
+        if not 0 <= g_perc <= 100:
+            print("Minefield not generated. Please enter percentage between 0 and 100.")
+        if g_rows <= 0 or g_cols <= 0:
+            print("Minefield not generated. Please enter positive integers for row and column counts.")
+        else:
+            writeinput(rows=g_rows, columns=g_cols, minepercentage=g_perc, file=g_file)
+
+# END
