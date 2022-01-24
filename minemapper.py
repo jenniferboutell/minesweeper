@@ -12,8 +12,8 @@ TextHandle = Union[TextIO, StringIO]
 """
 Default input and output files.
 """
-g_dflt_infile = 'official_input.txt'
-g_dflt_outfile = 'minesweeper_output.txt'
+g_dflt_infile = 'input.txt'
+g_dflt_outfile = 'output.txt'
 
 
 def read_dimens(input_fh: TextHandle) -> tuple[int, int]:
