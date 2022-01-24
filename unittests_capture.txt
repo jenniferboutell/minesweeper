@@ -1,0 +1,36 @@
+/Users/jope/src/ghub/minesweeper/venv/bin/python "/Users/jope/Library/Application Support/JetBrains/Toolbox/apps/PyCharm-P/ch-0/212.5284.44/PyCharm.app/Contents/plugins/python/helpers/pycharm/_jb_pytest_runner.py" --path /Users/jope/src/ghub/minesweeper
+Testing started at 1:19 PM ...
+Launching pytest with arguments /Users/jope/src/ghub/minesweeper --no-header --no-summary -q in /Users/jope/src/ghub/minesweeper
+
+============================= test session starts ==============================
+collecting ... collected 25 items
+
+test_hints.py::test_validate_hints_producing_function_1_mine PASSED      [  4%]
+test_hints.py::test_validate_hints_producing_function_0_mine PASSED      [  8%]
+test_hints.py::test_validate_hints_producing_function_all_mines PASSED   [ 12%]
+test_hints.py::test_validate_hints_producing_function_8_mines PASSED     [ 16%]
+test_hints.py::test_validate_hints_producing_function_3_mines_diagonal PASSED [ 20%]
+test_hints.py::test_validate_hints_producing_function_8_mines_mixed PASSED [ 24%]
+test_misc.py::test_xlate_1_field PASSED                                  [ 28%]
+test_misc.py::test_xlate_0_field PASSED                                  [ 32%]
+test_misc.py::test_xlate_3_fields PASSED                                 [ 36%]
+test_misc.py::test_xlate_official PASSED                                 [ 40%]
+test_misc.py::test_xlate_generated PASSED                                [ 44%]
+test_read.py::test_read_1_by_1 PASSED                                    [ 48%]
+test_read.py::test_read_2_by_2 PASSED                                    [ 52%]
+test_read.py::test_read_1_by_20 PASSED                                   [ 56%]
+test_read.py::test_read_23_by_47 PASSED                                  [ 60%]
+test_read.py::test_read_100_by_1 PASSED                                  [ 64%]
+test_read.py::test_read_1_by_100 PASSED                                  [ 68%]
+test_read.py::test_read_100_by_100 PASSED                                [ 72%]
+test_write.py::test_write_1_by_1 PASSED                                  [ 76%]
+test_write.py::test_write_2_by_2 PASSED                                  [ 80%]
+test_write.py::test_write_1_by_20 PASSED                                 [ 84%]
+test_write.py::test_write_23_by_47 PASSED                                [ 88%]
+test_write.py::test_write_100_by_1 PASSED                                [ 92%]
+test_write.py::test_write_1_by_100 PASSED                                [ 96%]
+test_write.py::test_write_100_by_100 PASSED                              [100%]
+
+============================== 25 passed in 0.49s ==============================
+
+Process finished with exit code 0
