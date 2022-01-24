@@ -131,6 +131,6 @@ dmypy.json
 # PyCharm
 .idea
 
-# Default output file
+# Default input and output files
 input.txt
-minesweeper_output.txt
+output.txt
