@@ -14,7 +14,7 @@ Jennifer - 4.5 hours
   Packaging and readme
   repository maintenance
   
-JP - 4.5 hours
+JP - 6 hours
   This project is based on JP's solution to the individual assignment.
   Most unit tests
   Debugging and troubleshooting
